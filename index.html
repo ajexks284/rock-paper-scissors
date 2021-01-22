@@ -41,6 +41,40 @@
                 compScore++;
             }
         }
+
+        function game() {
+            let i = 0;
+            let playerSelection;
+            let compSelection;
+            
+            // Play 5 rounds
+            while (i < 5) {
+                // Determine player and computer choices
+                playerSelection = prompt('What do you choose?', '').toLowerCase();
+                compSelection = computerPlay();
+
+                // Return error message if incorrect choice. Continues the loop without going to next round
+                if (playRound(playerSelection, compSelection) === null) {
+                    console.log("You should pick 'rock', 'paper' or 'scissors'. Try again!");
+                    continue;
+                }
+
+                console.log(' ');
+                console.log(`Round ${i+1}`);
+                console.log('----------------------');
+                console.log(playRound(playerSelection, compSelection));  // Win/Lose/Draw message
+                increaseScore(playerSelection, compSelection);           // Increase score
+                console.log(`The score is ${playerScore}-${compScore}`); // Displays the score
+                console.log('----------------------');
+                console.log(' ');
+
+                i++;
+            }
+
+            // End game message
+            console.log(`GAME OVER! ${playerScore > compScore ? 'You won!' : playerScore === compScore ? "It's a draw!" : "You lost!"}.`);
+            console.log('Reload the page if you want to play again!');
+        }
     </script>
 </body>
 </html>
