@@ -7,6 +7,9 @@
 </head>
 <body>
     <script>
+        let playerScore = 0;
+        let compScore = 0;
+
         function computerPlay() {
             let choiceList = ['rock', 'paper', 'scissors'];
             let choiceIndex = Math.floor(Math.random() * 3);
@@ -28,6 +31,14 @@
                     return `You lose! ${player} loses to ${comp}`;
             } else {
                     return null;
+            }
+        }
+
+        function increaseScore(player, comp) {
+            if (playRound(player, comp) === `You win! ${player} beats ${comp}`) {
+                playerScore++;
+            } else if (playRound(player, comp) === `You lose! ${player} loses to ${comp}`) {
+                compScore++;
             }
         }
     </script>
