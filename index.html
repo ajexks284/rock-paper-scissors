@@ -12,6 +12,24 @@
             let choiceIndex = Math.floor(Math.random() * 3);
             return choiceList[choiceIndex];
         }
+
+        function playRound(player, comp) {
+            if (player === comp) {
+                    return "It's a draw!";
+            } else if (
+                player === 'rock' && comp === 'scissors' ||
+                player === 'scissors' && comp === 'paper' ||
+                player === 'paper' && comp === 'rock') {
+                    return `You win! ${player} beats ${comp}`;
+            } else if (
+                player === 'rock' && comp === 'paper' ||
+                player === 'scissors' && comp === 'rock' ||
+                player === 'paper' && comp === 'scissors') {
+                    return `You lose! ${player} loses to ${comp}`;
+            } else {
+                    return null;
+            }
+        }
     </script>
 </body>
 </html>
