@@ -1,2 +1,2 @@
-Created a basic console version of rock-paper-scissors game.
-The Odin Project
+Updated the rock-paper-scissors game to have an UI.
+The Odin Project.

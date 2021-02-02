@@ -4,79 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <style>
+        img {
+            pointer-events: none; /* if you click the image it doesn't return the button's id */
+        }
+    </style>
 </head>
 <body>
-    <script>
-        let playerScore = 0;
-        let compScore = 0;
+    <h1 class="score">SCORE: <span class="player-score">0</span>-<span class="computer-score">0</span></h1>
 
-        game();
+    <button id="rock" class="btn"><img src="img/icon-rock.svg" alt="ROCK"></button>
+    <button id="paper" class="btn"><img src="img/icon-paper.svg" alt="PAPER"></button>
+    <button id="scissors" class="btn"><img src="img/icon-scissors.svg" alt="SCISSORS"></button>
 
-        function computerPlay() {
-            let choiceList = ['rock', 'paper', 'scissors'];
-            let choiceIndex = Math.floor(Math.random() * 3);
-            return choiceList[choiceIndex];
-        }
+    <p class="win-info"></p>
 
-        function playRound(player, comp) {
-            if (player === comp) {
-                    return "It's a draw!";
-            } else if (
-                player === 'rock' && comp === 'scissors' ||
-                player === 'scissors' && comp === 'paper' ||
-                player === 'paper' && comp === 'rock') {
-                    return `You win! ${player} beats ${comp}`;
-            } else if (
-                player === 'rock' && comp === 'paper' ||
-                player === 'scissors' && comp === 'rock' ||
-                player === 'paper' && comp === 'scissors') {
-                    return `You lose! ${player} loses to ${comp}`;
-            } else {
-                    return null;
-            }
-        }
-
-        function increaseScore(player, comp) {
-            if (playRound(player, comp) === `You win! ${player} beats ${comp}`) {
-                playerScore++;
-            } else if (playRound(player, comp) === `You lose! ${player} loses to ${comp}`) {
-                compScore++;
-            }
-        }
-
-        function game() {
-            let i = 0;
-            let playerSelection;
-            let compSelection;
-            
-            // Play 5 rounds
-            while (i < 5) {
-                // Determine player and computer choices
-                playerSelection = prompt('What do you choose?', '').toLowerCase();
-                compSelection = computerPlay();
-
-                // Return error message if incorrect choice. Continues the loop without going to next round
-                if (playRound(playerSelection, compSelection) === null) {
-                    console.log("You should pick 'rock', 'paper' or 'scissors'. Try again!");
-                    continue;
-                }
-
-                console.log(' ');
-                console.log(`Round ${i+1}`);
-                console.log('----------------------');
-                console.log(playRound(playerSelection, compSelection));  // Win/Lose/Draw message
-                increaseScore(playerSelection, compSelection);           // Increase score
-                console.log(`The score is ${playerScore}-${compScore}`); // Displays the score
-                console.log('----------------------');
-                console.log(' ');
-
-                i++;
-            }
-
-            // End game message
-            console.log(`GAME OVER! ${playerScore > compScore ? 'You won!' : playerScore === compScore ? "It's a draw!" : "You lost!"}.`);
-            console.log('Reload the page if you want to play again!');
-        }
-    </script>
+    <script src="game.js"></script>
 </body>
 </html>
